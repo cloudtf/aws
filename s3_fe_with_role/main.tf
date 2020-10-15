@@ -97,10 +97,6 @@ resource "aws_iam_role" "role_s3_fe" {
   )
 }
 
-output "role_s3_fe" {
-  value = aws_iam_role.role_s3_fe.arn
-}
-
 resource "aws_iam_user" "devops_user0" {
   name = "devops_user0"
 }
@@ -109,11 +105,12 @@ resource "aws_iam_access_key" "devops_user0_access" {
   user    = aws_iam_user.devops_user0.name
 }
 
-output "secret" {
+output "output" {
   value = {
     "username": "${aws_iam_user.devops_user0.name}",
     "access": "${aws_iam_access_key.devops_user0_access.id}",
-    "secret": "${aws_iam_access_key.devops_user0_access.secret}"
+    "secret": "${aws_iam_access_key.devops_user0_access.secret}",
+    "role_s3_fe" : "${aws_iam_role.role_s3_fe.arn}"
     }
   
   # sensitive   = true
