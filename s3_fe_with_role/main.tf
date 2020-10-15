@@ -111,7 +111,8 @@ output "output" {
     "access": "${aws_iam_access_key.devops_user0_access.id}",
     "secret": "${aws_iam_access_key.devops_user0_access.secret}",
     "role_s3_fe" : "${aws_iam_role.role_s3_fe.arn}",
-    "s3_website" : "${aws_s3_bucket.s3_fe.website_domain}"
+    "s3_website" : "${aws_s3_bucket.s3_fe.website_endpoint}",
+    "s3_bucket" : "${aws_s3_bucket.s3_fe.id}"
     }
   
   # sensitive   = true
